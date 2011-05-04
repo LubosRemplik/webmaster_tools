@@ -80,7 +80,6 @@ class SitemapHelper extends AppHelper {
 		foreach ($this->_data as $item) {
 			$sections[$item['section']][] = $item;
 		}
-		ksort($sections);
 
 		foreach ($sections as $section => $items) {
 			$html .= $this->Html->tag('h2', $section);

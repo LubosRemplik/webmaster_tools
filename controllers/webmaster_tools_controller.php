@@ -26,7 +26,7 @@ class WebmasterToolsController extends WebmasterToolsAppController {
 
 	public $uses = array();
 
-	public $components = array('RequestHandler');
+	public $components = array('RequestHandler', 'Frontpage.Frontpage');
 
 	public function beforeFilter() {
 		parent::beforeFilter();
@@ -40,14 +40,11 @@ class WebmasterToolsController extends WebmasterToolsAppController {
 
     public function sitemap(){
 		$this->helpers[] = 'WebmasterTools.Sitemap';
+		$this->helpers[] = 'Frontpage.Frontpage';
 
         if ($this->RequestHandler->prefers('xml')) {
  			$this->RequestHandler->respondAs('xml');
         }
-
-		$Page = ClassRegistry::init('Page');
-		$pages = $Page->find('all');
-		$this->set(compact('pages'));
 	}
 
     public function robot_control() {

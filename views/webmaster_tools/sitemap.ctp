@@ -1,14 +1,7 @@
-<h2>Sitemap</h2>
+<h1><?php echo Page::get('title') ?></h1>
+<?php echo $this->element('content', array('category' => 'main-column')) ?>
 <?php
-$this->set('title_for_layout', 'Sitemap');
-
-foreach ($pages as $page) {
-	$url = array('controller' => 'pages', 'action' => 'view', 'slug' => $page['Page']['slug']);
-	$sitemap->add($url , array(
-		'section' => 'Pages',
-		'title' => $page['Page']['title']
-	));
-}
-
-echo $sitemap->generate(array('format' => 'html'));
+$this->element('pages', array('id'=>2, 'section'=>'Main pages'));
+$this->element('pages', array('id'=>105, 'section'=>'Footer pages'));
+echo $sitemap->generate('html');
 ?>
