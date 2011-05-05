@@ -6,8 +6,12 @@ if(isset($id)) {
 		else $url = $item['Page']['url'];
 		$sitemap->add($url, array(
 			'title'=>$item['Page']['title'],
-			'section'=>$section
+			'section'=>$section,
+			'level'=>$level
 		));
-		$this->element('pages', array('id'=>$item['Page']['id'], 'section'=>$section));
+		$this->element('pages', array(
+			'id'=>$item['Page']['id'], 
+			'section'=>$section, 'level'=>count(explode('/', $item['Page']['url']))
+		));
 	}
 }

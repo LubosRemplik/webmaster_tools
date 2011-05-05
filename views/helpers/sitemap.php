@@ -42,6 +42,7 @@ class SitemapHelper extends AppHelper {
 			'priority' => null, // 0.0 - 1.0 (most important), 0.5 is considered the default.
 			'title' => null, // For XML used as comment, otherwise for HTML.
 			'section' => null, // Used for HTML only.
+			'level' => 1, // Used for HTML only.
 			'images' => array()
 		);
 		$this->_data[] = compact('url') + $options + $defaults;
@@ -85,10 +86,17 @@ class SitemapHelper extends AppHelper {
 			$html .= $this->Html->tag('h2', $section);
 			$sectionHtml = '';
 
+			$level = 1;
 			foreach ($items as $item) {
+				while($level > $item['level']) {
+					$sectionHtml .= '</ul>';
+					$level--;
+				}
+				if($level < $item['level']) $sectionHtml .= '<ul>';
 				$sectionHtml .= $this->Html->tag(
 					'li', $this->Html->link($item['title'], $item['url'])
 				);
+				$level = $item['level'];
 			}
 			$class = 'sitemap';
 
