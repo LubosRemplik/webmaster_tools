@@ -38,13 +38,14 @@ class WebmasterToolsController extends WebmasterToolsAppController {
 		}
 	}
 
-    public function sitemap(){
+    public function sitemap($viewFile = 'sitemap'){
 		$this->helpers[] = 'WebmasterTools.Sitemap';
 		$this->helpers[] = 'Frontpage.Frontpage';
 
         if ($this->RequestHandler->prefers('xml')) {
  			$this->RequestHandler->respondAs('xml');
         }
+        $this->render($viewFile);
 	}
 
     public function robot_control() {

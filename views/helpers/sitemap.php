@@ -143,6 +143,42 @@ class SitemapHelper extends AppHelper {
 		return $Document->saveXml();
 	}
 
+	protected function _generateXmlMobile() {
+		$Document = new DomDocument('1.0', 'UTF-8');
+		$Set = $Document->createElementNs(
+			'http://www.sitemaps.org/schemas/sitemap/0.9', 'urlset'
+		);
+		$Set->setAttribute(
+			'xmlns:mobile', 'http://www.google.com/schemas/sitemap-mobile/1.0'
+		);
+
+		foreach ($this->_data as $item) {
+			$Page = $Document->createElement('url');
+
+			if ($item['title']) {
+				$Page->appendChild($Document->createComment($item['title']));
+			}
+			$Page->appendChild($Document->createElement('loc', h($this->url($item['url'], true))));
+
+			if ($item['modified']) {
+				$Page->appendChild($Document->createElement('lastmod', date('c', strtotime($item['modified']))));
+			}
+			if ($item['changes']) {
+				$Page->appendChild($Document->createElement('changefreq', $item['changes']));
+			}
+			if ($item['priority']) {
+				$Page->appendChild($Document->createElement('priority', $item['priority']));
+			}
+
+            $Page->appendChild($Document->createElement('mobile:mobile'));
+
+			$Set->appendChild($Page);
+		}
+		$Document->appendChild($Set);
+
+		return $Document->saveXml();
+    }
+
 	// @link http://www.sitemaps.org/protocol.php#otherformats
 	protected function _generateTxt() {
 		$result = null;
