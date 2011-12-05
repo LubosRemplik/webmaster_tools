@@ -2,6 +2,7 @@
 <?php
 $this->element('pages', array('id'=>2, 'section'=>'Main pages', 'level'=>1));
 $this->element('pages', array('id'=>105, 'section'=>'Footer pages', 'level'=>1));
+$this->element('press_releases');
 $socialLinks = array(
 	'facebook' => array('title' => 'Facebook', 'url' => 'http://www.facebook.com/elementalcomms'),
     'flickr' => array('title' => 'Flickr', 'url' => 'http://flickr.com/elementalcomms'),
