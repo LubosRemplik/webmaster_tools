@@ -1,8 +1,11 @@
 <?php echo $this->element('content', array('category' => 'main-column')) ?>
 <?php
-$this->element('pages', array('id'=>2, 'section'=>'Main pages', 'level'=>1));
-$this->element('pages', array('id'=>105, 'section'=>'Footer pages', 'level'=>1));
+$this->element('pages', array('id'=>2, 'section'=>'Main Pages', 'level'=>1));
 $this->element('press_releases');
+$this->element('media_coverages');
+$this->element('case_studies');
+$this->element('posts');
+$this->element('pages', array('id'=>105, 'section'=>'Footer Pages', 'level'=>1));
 $socialLinks = array(
 	'facebook' => array('title' => 'Facebook', 'url' => 'http://www.facebook.com/elementalcomms'),
     'flickr' => array('title' => 'Flickr', 'url' => 'http://flickr.com/elementalcomms'),

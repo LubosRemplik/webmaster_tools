@@ -74,39 +74,32 @@ class SitemapHelper extends AppHelper {
 		return $result;
 	}
 
-	protected function _generateHtml() {
-		$html = null;
-		$sections = array();
+    protected function _generateHtml() {
+        $html = null;
+        $sections = array();
 
-		foreach ($this->_data as $item) {
-			$sections[$item['section']][] = $item;
-		}
+        foreach ($this->_data as $item) {
+            $sections[$item['section']][] = $item;
+        }
 
-		foreach ($sections as $section => $items) {
-			$html .= $this->Html->tag('h2', $section);
-			$sectionHtml = '';
+        foreach ($sections as $section => $items) {
+            $html .= $this->Html->tag('h2', $section);
+            $sectionHtml = '';
 
-			$level = 1;
-			foreach ($items as $item) {
-				while($level > $item['level']) {
-					$sectionHtml .= '</ul>';
-					$level--;
-				}
-				if($level < $item['level']) $sectionHtml .= '<ul>';
-				$sectionHtml .= $this->Html->tag(
-					'li', $this->Html->link($item['title'], $item['url'])
-				);
-				$level = $item['level'];
-			}
-			$class = 'sitemap';
+            foreach ($items as $item) {
+                $sectionHtml .= $this->Html->tag(
+                    'li', $this->Html->link($item['title'], $item['url'])
+                );
+            }
+            $class = 'sitemap';
 
-			if ($section) {
-				$class .= ' ' . strtolower(Inflector::slug($section, '-'));
-			}
-			$html .= $this->Html->tag('ul', $sectionHtml, compact('class'));
-		}
-		return $html;
-	}
+            if ($section) {
+                $class .= ' ' . strtolower(Inflector::slug($section, '-'));
+            }
+            $html .= $this->Html->tag('ul', $sectionHtml, compact('class'));
+        }
+        return $html;
+    }
 
 	protected function _generateXml() {
 		$Document = new DomDocument('1.0', 'UTF-8');

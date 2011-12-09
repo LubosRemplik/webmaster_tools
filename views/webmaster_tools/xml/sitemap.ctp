@@ -2,6 +2,9 @@
 	$this->element('xml/pages', array('id'=>2, 'priority'=>1.0));
 	$this->element('xml/pages', array('id'=>105, 'priority'=>1.0));
 	$this->element('xml/press_releases', array('priority'=>0.5));
+	$this->element('xml/media_coverages', array('priority'=>0.5));
+	$this->element('xml/case_studies', array('priority'=>0.5));
+	$this->element('xml/posts', array('priority'=>0.5));
 	$socialLinks = array(
 		'facebook' => array('title' => 'Facebook', 'url' => 'http://www.facebook.com/elementalcomms'),
 	    'flickr' => array('title' => 'Flickr', 'url' => 'http://flickr.com/elementalcomms'),
