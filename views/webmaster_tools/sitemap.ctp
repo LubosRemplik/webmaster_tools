@@ -8,8 +8,8 @@ $this->element('posts');
 $this->element('pages', array('id'=>105, 'section'=>'Footer Pages', 'level'=>1));
 $socialLinks = array(
 	'facebook' => array('title' => 'Facebook', 'url' => 'http://www.facebook.com/elementalcomms'),
-    'flickr' => array('title' => 'Flickr', 'url' => 'http://flickr.com/elementalcomms'),
-    'linkedin' => array('title' => 'LinkedIn', 'url' => 'http://www.linkedin.com/companies/elemental-communications-limited'),
+    'flickr' => array('title' => 'Flickr', 'url' => 'http://www.flickr.com/photos/elementalcomms'),
+    'linkedin' => array('title' => 'LinkedIn', 'url' => 'http://www.linkedin.com/companies/elemental-communications'),
     'twitter' => array('title' => 'Twitter', 'url' => 'http://twitter.com/elementalcomms'),
     'youtube' => array('title' => 'YouTube', 'url' => 'http://youtube.com/elementalcomms'),
 	'slideshare' => array('title' => 'Slideshare', 'url' => 'http://www.slideshare.net/elementalcomms'),
